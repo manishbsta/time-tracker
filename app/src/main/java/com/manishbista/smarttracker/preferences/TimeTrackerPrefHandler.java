@@ -4,10 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-/**
- * Created by afrin on 26/10/17.
- */
-
 public enum TimeTrackerPrefHandler {
     INSTANCE;
     public static final String PREF_LIST = "pref_list";

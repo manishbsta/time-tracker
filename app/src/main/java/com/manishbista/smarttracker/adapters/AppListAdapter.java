@@ -17,10 +17,6 @@ import com.manishbista.smarttracker.screens.SettingsActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by afrin on 25/10/17.
- */
-
 public class AppListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<AppInfo> data;
     private Context context;

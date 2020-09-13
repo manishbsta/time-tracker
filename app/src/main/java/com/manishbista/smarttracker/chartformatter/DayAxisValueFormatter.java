@@ -6,10 +6,6 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.List;
 
-/**
- * Created by afrin on 23/10/17.
- */
-
 public class DayAxisValueFormatter implements IAxisValueFormatter {
 
     protected String[] appList;
