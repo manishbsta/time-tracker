@@ -105,9 +105,6 @@ public class RegistrationActivity extends AppCompatActivity {
                             HashMap<String, String> userMap = new HashMap<>();
                             userMap.put("name", displayName);
                             userMap.put("email", email);
-                            userMap.put("status", "Hey! Let's chat - ping me or send me a friend request.");
-                            userMap.put("image", "empty");
-                            userMap.put("thumb_image", "empty");
 
                             dbReference.setValue(userMap)
                                     .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<Void>() {
