@@ -31,4 +31,16 @@
     <string name="network">Network</string>
     <string name="network_stats">Network Stats</string>
     <string name="networks_stats_na">Sorry. This feature is not available for you Android Version.</string>
+
+
+    <string name="welcome_text">Welcome to Smart Usage Tracker!</string>
+    <string name="btn_create_an_account">Create an account</string>
+    <string name="btn_already_have_an_account">Already have an account</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="log_out">Log Out</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_a_new_account">Create a new account</string>
+    <string name="log_in_to_your_account">Log in to your account</string>
+    <string name="login">Login</string>
 </resources>

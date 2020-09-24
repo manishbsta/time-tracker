@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="16dp"
+    tools:context=".screens.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/ic_stopwatch" />
+
+    <TextView
+        android:id="@+id/txtWelcomeStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgLogo"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFF"
+        android:gravity="center_horizontal"
+        android:text="@string/welcome_text"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSignInStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWelcomeStart"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:background="@color/colorAccent"
+        android:text="@string/btn_already_have_an_account" />
+
+    <Button
+        android:id="@+id/btnSignUpStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSignInStart"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_create_an_account"
+        android:background="#FFF" />
+
+</RelativeLayout>
