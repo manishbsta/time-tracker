@@ -24,7 +24,6 @@
     <string name="step_5">Scroll horizontally to
         view the usage time for all the apps selected</string>
     <string name="no_data">Select apps from Settings screen to view its usage info</string>
-    <!--<string name="adUnitId">ca-app-pub-3940256099942544/6300978111</string>  &lt;!&ndash;// //add test&ndash;&gt;-->
     <string name="adUnitId">ca-app-pub-3912594581926590/5234837081</string>
 
     <string name="app">App</string>
@@ -36,6 +35,8 @@
     <string name="welcome_text">Welcome to Smart Usage Tracker!</string>
     <string name="btn_create_an_account">Create an account</string>
     <string name="btn_already_have_an_account">Already have an account</string>
+
+    <string name="display_name">Display Name</string>
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="log_out">Log Out</string>
