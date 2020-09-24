@@ -2,17 +2,21 @@ package com.manishbista.smarttracker.screens;
 
 import android.app.ProgressDialog;
 import android.app.usage.UsageStats;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.manishbista.smarttracker.R;
 import com.manishbista.smarttracker.Utils.AppHelper;
 import com.manishbista.smarttracker.Utils.AppInfo;
@@ -31,6 +35,8 @@ import java.util.Map;
 public class SettingsActivity extends AppCompatActivity implements
         AppListAdapter.OnSettingsChangedListener {
 
+    private FirebaseAuth mAuth;
+
     private List<AppInfo> appList = new ArrayList<AppInfo>();
     private AppListAdapter appListAdapter;
     private RecyclerView appRecyclerList;
@@ -43,6 +49,8 @@ public class SettingsActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        mAuth = FirebaseAuth.getInstance();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_settings);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Settings");
@@ -52,6 +60,28 @@ public class SettingsActivity extends AppCompatActivity implements
         setAppList();
         packageManager = getPackageManager();
         new LoadApplications().execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        if(item.getItemId()==R.id.mItemLogOut) {
+            mAuth.signOut();
+            Intent intent = new Intent(SettingsActivity.this, WelcomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+
+        return true;
     }
 
     private void setAppList() {
@@ -160,23 +190,6 @@ public class SettingsActivity extends AppCompatActivity implements
         onBackPressed();
         return true;
     }
-
-    private List<AppInfo> filter(List<AppInfo> models, String query) {
-        query = query.toLowerCase();
-        final List<AppInfo> filteredModelList = new ArrayList<>();
-        for (AppInfo model : models) {
-            final String text = model.getAppName().toLowerCase();
-            if (text.contains(query)) {
-                filteredModelList.add(model);
-            }
-        }
-        return filteredModelList;
-    }
-//
-//    @Override
-//    public boolean onQueryTextSubmit(String query) {
-//        return false;
-//    }
 
 
     @Override

@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.manishbista.smarttracker.R;
 import com.manishbista.smarttracker.Utils.AppHelper;
 import com.manishbista.smarttracker.adapters.PagerAdapter;
@@ -32,6 +34,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+
     private static final int MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS = 100;
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -41,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout tutorialView;
     private List<String> prefList = new ArrayList<String>();
     private String[] defaultList = {"com.facebook.katana", "com.instagram.android", "com.whatsapp", "com.android.chrome", "com.twitter.android"};
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser == null) {
+            sendToStart();
+        }
+    }
+
+    private void sendToStart() {
+        Intent startIntent = new Intent(MainActivity.this, WelcomeActivity.class);
+        startActivity(startIntent);
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         setTutorialScreen();
         createLayout();
     }
+
 
     private void setAppList() {
         String serialized = TimeTrackerPrefHandler.INSTANCE.getPkgList(getApplicationContext());
@@ -152,9 +174,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setAppList();
-//        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(),
-//                prefList);
-//        viewPager.setAdapter(pagerAdapter);
         Log.d("MainActivity", "onResume: ");
     }
 
@@ -191,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_refresh:
                 setViewPager();
-//                pagerAdapter.notifyDataSetChanged();
                 return true;
             case R.id.action_info:
                 showTutorialView();
