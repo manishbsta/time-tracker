@@ -3,10 +3,6 @@ package com.manishbista.smarttracker.Utils;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
 
-/**
- * Created by afrin on 23/10/17.
- */
-
 public class AppHelper {
 
     public static final String TAG = "TIME_TRACKER";

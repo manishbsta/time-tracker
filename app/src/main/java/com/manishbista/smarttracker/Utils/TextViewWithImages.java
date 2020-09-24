@@ -1,18 +1,16 @@
 package com.manishbista.smarttracker.Utils;
 
-/**
- * Created by afrin on 31/10/17.
- */
-
 import android.content.Context;
 import android.text.Spannable;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextViewWithImages extends android.support.v7.widget.AppCompatTextView {
+public class TextViewWithImages extends AppCompatTextView {
 
     public TextViewWithImages(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

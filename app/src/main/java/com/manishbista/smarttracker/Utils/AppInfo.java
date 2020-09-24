@@ -2,10 +2,6 @@ package com.manishbista.smarttracker.Utils;
 
 import android.graphics.drawable.Drawable;
 
-/**
- * Created by afrin on 25/10/17.
- */
-
 public class AppInfo {
     private String appName;
     private String appPkgName;

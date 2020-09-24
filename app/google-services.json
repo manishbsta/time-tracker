@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1055752148606",
+    "firebase_url": "https://time-tracker-8f472.firebaseio.com",
+    "project_id": "time-tracker-8f472",
+    "storage_bucket": "time-tracker-8f472.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055752148606:android:5c5bbc3fedeb7f5399aa2f",
+        "android_client_info": {
+          "package_name": "com.manishbista.smarttracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055752148606-r6qu1lk3g6t0ldit10k6tcqers66pjhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOzuY8eMXAHhB9rcyC53JZ3rdY604IGIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055752148606-r6qu1lk3g6t0ldit10k6tcqers66pjhe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

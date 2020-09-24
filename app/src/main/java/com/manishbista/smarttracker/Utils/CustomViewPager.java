@@ -1,14 +1,12 @@
 package com.manishbista.smarttracker.Utils;
 
-/**
- * Created by afrin on 31/10/17.
- */
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-public class CustomViewPager extends android.support.v4.view.ViewPager{
+import androidx.viewpager.widget.ViewPager;
+
+public class CustomViewPager extends ViewPager {
     private boolean enabled;
 
     public CustomViewPager(Context context, AttributeSet attrs) {

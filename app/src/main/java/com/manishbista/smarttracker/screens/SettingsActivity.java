@@ -6,20 +6,16 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.manishbista.smarttracker.R;
 import com.manishbista.smarttracker.Utils.AppHelper;
 import com.manishbista.smarttracker.Utils.AppInfo;
-import com.manishbista.smarttracker.Utils.ListItemDecoration;
 import com.manishbista.smarttracker.adapters.AppListAdapter;
 import com.manishbista.smarttracker.preferences.TimeTrackerPrefHandler;
 
@@ -33,8 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity implements
-        AppListAdapter.OnSettingsChangedListener,
-        SearchView.OnQueryTextListener {
+        AppListAdapter.OnSettingsChangedListener {
 
     private List<AppInfo> appList = new ArrayList<AppInfo>();
     private AppListAdapter appListAdapter;
@@ -70,8 +65,6 @@ public class SettingsActivity extends AppCompatActivity implements
         if (appListAdapter != null) {
             appRecyclerList.setAdapter(appListAdapter);
             appRecyclerList.setLayoutManager(new LinearLayoutManager(this));
-            appRecyclerList.addItemDecoration(new ListItemDecoration(
-                    Math.round(getResources().getDisplayMetrics().density * 5)));
             appListAdapter.setOnSettingsChangedListener(this);
         }
     }
@@ -168,24 +161,6 @@ public class SettingsActivity extends AppCompatActivity implements
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar_settings_menu, menu);
-        // Retrieve the SearchView and plug it into SearchManager
-        final MenuItem item = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(this);
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String query) {
-        // Here is where we are going to implement the filter logic
-        final List<AppInfo> filteredModelList = filter(appList, query);
-        appListAdapter.setFilter(filteredModelList);
-        return true;
-    }
-
     private List<AppInfo> filter(List<AppInfo> models, String query) {
         query = query.toLowerCase();
         final List<AppInfo> filteredModelList = new ArrayList<>();
@@ -197,11 +172,11 @@ public class SettingsActivity extends AppCompatActivity implements
         }
         return filteredModelList;
     }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
+//
+//    @Override
+//    public boolean onQueryTextSubmit(String query) {
+//        return false;
+//    }
 
 
     @Override

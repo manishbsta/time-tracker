@@ -7,10 +7,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -19,11 +15,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.manishbista.smarttracker.R;
+import com.manishbista.smarttracker.Utils.AppHelper;
 import com.manishbista.smarttracker.adapters.PagerAdapter;
 import com.manishbista.smarttracker.preferences.TimeTrackerPrefHandler;
-import com.manishbista.smarttracker.Utils.AppHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -159,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS:
                 fillStats();
