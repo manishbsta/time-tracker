@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,13 +33,15 @@ public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference dbReference;
 
-    private Toolbar mtoolbar;
     private TextInputLayout etDisplayName;
     private TextInputLayout etEmail;
     private TextInputLayout etPassword;
     private Button btnReg;
+    private CheckBox cbTermsAndPolicies;
 
     private ProgressDialog mRegProgress;
+
+    private boolean isTermsChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +52,14 @@ public class RegistrationActivity extends AppCompatActivity {
         etDisplayName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
+        cbTermsAndPolicies = findViewById(R.id.cbTermsAndPolicies);
         btnReg = findViewById(R.id.btnRegister);
+
+        TextView txtTerms = findViewById(R.id.txtTerms);
 
         mRegProgress = new ProgressDialog(this);
 
-        mtoolbar = findViewById(R.id.toolbarReg);
+        Toolbar mtoolbar = findViewById(R.id.toolbarReg);
         setSupportActionBar(mtoolbar);
         getSupportActionBar().setTitle("Account Registration");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -63,13 +71,27 @@ public class RegistrationActivity extends AppCompatActivity {
                 String email = etEmail.getEditText().getText().toString().trim();
                 String password = etPassword.getEditText().getText().toString().trim();
 
-                if (validation(displayName, email, password)) {
+                if (validation(displayName, email, password) && isTermsChecked) {
                     mRegProgress.setTitle("Creating your account");
                     mRegProgress.setMessage("Please hold on a sec or two...");
                     mRegProgress.setCanceledOnTouchOutside(false);
                     mRegProgress.show();
                     register(displayName, email, password);
                 }
+            }
+        });
+
+        txtTerms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //To-do
+            }
+        });
+
+        cbTermsAndPolicies.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isTermsChecked = isChecked;
             }
         });
     }
@@ -87,7 +109,10 @@ public class RegistrationActivity extends AppCompatActivity {
             Objects.requireNonNull(etPassword.getEditText()).requestFocus();
             etPassword.getEditText().setError("Password is empty!");
             return false;
+        } else if(!isTermsChecked) {
+            Toast.makeText(this, "You must accept terms and conditions!", Toast.LENGTH_SHORT).show();
         }
+
         return true;
     }
 
