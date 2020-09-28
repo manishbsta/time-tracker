@@ -71,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String email = etEmail.getEditText().getText().toString().trim();
                 String password = etPassword.getEditText().getText().toString().trim();
 
-                if (validation(displayName, email, password) && isTermsChecked) {
+                if (validation(displayName, email, password)) {
                     mRegProgress.setTitle("Creating your account");
                     mRegProgress.setMessage("Please hold on a sec or two...");
                     mRegProgress.setCanceledOnTouchOutside(false);
@@ -111,6 +111,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         } else if(!isTermsChecked) {
             Toast.makeText(this, "You must accept terms and conditions!", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         return true;
