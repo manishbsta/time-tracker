@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private static PagerAdapter pagerAdapter;
     private RelativeLayout tutorialView;
     private List<String> prefList = new ArrayList<String>();
-    private String[] defaultList = {"com.facebook.katana", "com.instagram.android", "com.whatsapp", "com.android.chrome", "com.twitter.android"};
+    private String[] defaultList = {"com.facebook.katana", "com.instagram.android",
+            "com.whatsapp", "com.android.chrome", "com.twitter.android"};
 
     @Override
     protected void onStart() {

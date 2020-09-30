@@ -45,7 +45,7 @@ public class UserDetailsTest {
 
         doAnswer(new Answer<Void>() {
             @Override
-            public Void answer(InvocationOnMock invocation) throws Throwable {
+            public Void answer(InvocationOnMock invocation) {
                 ValueEventListener valueEventListener = (ValueEventListener) invocation.getArguments()[0];
 
                 DataSnapshot mockedDataSnapshot = Mockito.mock(DataSnapshot.class);
